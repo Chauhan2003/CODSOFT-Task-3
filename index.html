@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<!-- Made By Gagan Chauhan -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,12 +43,11 @@
 
     <script>
 
-        // upper output is for showing the expression
         let outputUpper = document.querySelector('#upper');
-        // lower output is for showing the result
+    
         let outputLower = document.querySelector('#lower');
 
-        // function to get number input
+      
         function pressNum(e) {
             if (outputLower.innerHTML === '0') {
                 outputLower.innerHTML = e.innerHTML;
@@ -58,18 +56,16 @@
             }
         }
 
-        // clear all
         function pressAllClear() {
             outputUpper.innerHTML = '';
             outputLower.innerHTML = '0';
         }
-
-        // clear one
+        
         function pressClear() {
             outputLower.innerHTML = outputLower.innerHTML.slice(0, -1);
         }
 
-        // calculate button
+
         function pressEqual() {
             let exp = outputLower.innerHTML;
             outputUpper.innerHTML = exp;
@@ -77,7 +73,7 @@
             let result;
             try {
                 result = eval(exp);
-                // if decimal number more than 4 decimal places
+
                 if (result.toString().indexOf('.') !== -1) {
                     result = result.toFixed(4);
                 }
@@ -88,7 +84,7 @@
         }
 
         function pressOperator(e) {
-            // check last operator
+      
             let lastOperator = outputLower.innerHTML.slice(-1);
             if (lastOperator.includes('+', '-', '×', '÷')) {
                 output.innerHTML = outputLower.innerHTML.slice(0, -1) + e.innerHTML;
@@ -105,7 +101,6 @@
             outputLower.innerHTML += e.innerHTML;
         }
 
-        // attach keyboard event
         document.addEventListener('keydown', function (e) {
             switch (e.key) {
                 case '0':
@@ -160,7 +155,6 @@
                     pressBracket(document.querySelector('button:nth-child(19)'));
                     break;
                 case 'Enter':
-                    // prevent default action
                     e.preventDefault();
                     pressEqual();
                     break;
